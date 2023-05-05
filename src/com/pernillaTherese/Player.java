@@ -94,7 +94,10 @@ public class Player {
             if(enemy.isDead()){ //if enemy dies, plus xp
                 System.out.println("** " + enemy.getName() + " IS DEAD! **");
                 System.out.println("** You gained " + enemy.getGIVEXP() + " experience from killing " + enemy.getName() + "! **\n");
+                System.out.println("You take care of your wounds and gain your health back to " + maxHp);
+                setHp(maxHp);
                 xpUp(enemy); // if xp hits maximum, level up.
+
             }
         }
         return dmg;

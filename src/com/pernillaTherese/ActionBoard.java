@@ -15,7 +15,7 @@ public class ActionBoard {
 
 
     Player player;
-    Enemy enemy = new Boar("Black Boar",500,180,75,2);
+    Enemy enemy = new Boar("Black Boar",150,150,75,2);
     ArrayList<Enemy> forestEnemyList = addForestEnemies();
 
     //Here's where it all happens
@@ -169,13 +169,18 @@ public class ActionBoard {
 
     public ArrayList<Enemy> addForestEnemies() {
         ArrayList<Enemy> forestEnemyList = new ArrayList<>();
-        forestEnemyList.add(new Troll("Senil Tribe Troll", 800,190,80,4));
-        forestEnemyList.add(new Boar("Uggly-as-Hell Boar",750,185,90,5));
-        forestEnemyList.add(new Boar("Big Black Boar",900,150,75,3));
+        forestEnemyList.add(new Troll("Senil Tribe Troll", 190,190,80,4));
+        forestEnemyList.add(new Boar("Uggly-as-Hell Boar",185,185,90,5));
+        forestEnemyList.add(new Boar("Big Black Boar",150,150,75,3));
         return forestEnemyList;
     }
 
-
+    public ArrayList<Enemy> addMeadowEnemies() {
+        ArrayList<Enemy> meadowEnemyList = new ArrayList<>();
+        forestEnemyList.add(new Troll("Meadow Troll", 600,190,80,4));
+        forestEnemyList.add(new Boar("Meadow Boar",550,185,90,5));
+        return meadowEnemyList;
+    }
 
 
     //GETTERS/SETTERS
