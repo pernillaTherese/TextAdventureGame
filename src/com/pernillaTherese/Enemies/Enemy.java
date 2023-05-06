@@ -124,8 +124,20 @@ public class Enemy {
         this.lvl = lvl;
     }
 
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
     public int getHp() {
         return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     public int getAverageDmg() {
@@ -145,17 +157,19 @@ public class Enemy {
         return critChance;
     }
 
-    public boolean isDead() {
-        return isDead;
-
-
-    }
-
     public int getGIVEXP() {
         return GIVEXP;
     }
 
     public int getDmg() {
         return dmg;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
     }
 }

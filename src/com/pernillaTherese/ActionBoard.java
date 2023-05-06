@@ -42,6 +42,8 @@ public class ActionBoard {
                 promptEnter();
             }
         }
+        enemy.setDead(false);
+        enemy.setHp(enemy.getMaxHp());
         addEnvironment();
     }
 
