@@ -17,6 +17,7 @@ public class ActionBoard {
     Player player;
     Enemy enemy = new Boar("Black Boar",150,150,150,75,2);
     ArrayList<Enemy> forestEnemyList = addForestEnemies();
+    ArrayList<Enemy> meadowEnemyList = addMeadowEnemies();
 
     //Here's where it all happens
     public ActionBoard() {
@@ -129,9 +130,20 @@ public class ActionBoard {
     public void createEnemy(){
         int meetEnemy = 1 + percentCal.nextInt(100);
         if(meetEnemy<90) {
-            if(getPlayer().getLvl()<=3) {
+            if(getPlayer().getLvl()<4) {
+                System.out.println("player level 1-3 " + getPlayer().getLvl());
                 int chance = percentCal.nextInt(getForestEnemyList().size());
                 Enemy e = getForestEnemyList().get(chance);
+                this.enemy = e;
+                if (e instanceof Boar) {
+                    System.out.println("You're standing face to face with a " + getEnemy().getName() + ". It looks disturbed by your presence.\n");
+                } else if (e instanceof Troll) {
+                    System.out.println("A hideous " + getEnemy().getName() + " is sneaking around you behind the trees. He smells like crap!\n");
+                }
+            }else if((getPlayer().getLvl())>3 && (getPlayer().getLvl()) <7) {
+                System.out.println("player level 4-6 " + getPlayer().getLvl());
+                int chance = percentCal.nextInt(getMeadowEnemyList().size());
+                Enemy e = getMeadowEnemyList().get(chance);
                 this.enemy = e;
                 if (e instanceof Boar) {
                     System.out.println("You're standing face to face with a " + getEnemy().getName() + ". It looks disturbed by your presence.\n");
@@ -179,8 +191,8 @@ public class ActionBoard {
 
     public ArrayList<Enemy> addMeadowEnemies() {
         ArrayList<Enemy> meadowEnemyList = new ArrayList<>();
-        forestEnemyList.add(new Troll("Meadow Troll", 600,600,190,80,4));
-        forestEnemyList.add(new Boar("Meadow Boar",550,550,185,90,5));
+        meadowEnemyList.add(new Troll("Meadow Troll", 600,600,190,80,4));
+        meadowEnemyList.add(new Boar("Meadow Boar",550,550,185,90,5));
         return meadowEnemyList;
     }
 
@@ -204,5 +216,9 @@ public class ActionBoard {
 
     public ArrayList<Enemy> getForestEnemyList() {
         return forestEnemyList;
+    }
+
+    public ArrayList<Enemy> getMeadowEnemyList() {
+        return meadowEnemyList;
     }
 }

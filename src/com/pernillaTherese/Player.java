@@ -14,13 +14,12 @@ public class Player {
     private int lvl; //1-10 When 10, ready for bossfight and then game is won.
     private int xp; //0-100 When 100 increase lvl. Incr when killing monster. Amount depends on monster.
     private int maxHp;
-    private int hp; //Incr. 10% each lvl + pots and gear.
-    private int averageDmg; //weaponDmg with hitChance depending on Skill
+    private int hp; //Incr. 10% each lvl + pots.
+    private int averageDmg; //weaponDmg with hitChance
     private int dmg;
-    private int hitChanceMelee; //50-100% Incr. +1 for each attack.
-    private int critChance; //% chance to crit. Incr. +1 for each lvl.
+    private int hitChanceMelee;
+    private int critChance;
     private boolean isDead;
-    private boolean daggerEquip = true;
 
 
     int choice;
@@ -31,7 +30,7 @@ public class Player {
         xp = 0;
         maxHp = 1000;
         hp = 1000;
-        hitChanceMelee = 70;
+        hitChanceMelee = 80;
         critChance = 5;
         isDead = false;
         dagger = new Dagger("Flintstone dagger", 1, 180);
@@ -81,7 +80,7 @@ public class Player {
             enemy.takeDamage(dmg); //enemy loose health equals to players dmg.
             System.out.println("Your health: " + hp + " | " + enemy.getName() + "'s health: " + enemy.getHp() + "\n");
 
-            if(enemy.isDead()){ //if enemy dies, plus xp
+            if(enemy.isDead()){ //if enemy dies, plus xp, regain health
                 System.out.println("** " + enemy.getName() + " IS DEAD! **");
                 System.out.println("** You gained " + enemy.getGIVEXP() + " experience from killing " + enemy.getName() + "! **\n");
                 System.out.println("You take care of your wounds and gain your health back to " + maxHp);
@@ -121,7 +120,6 @@ public class Player {
     public void levelUp() { //when xp hits 100 lvl up
         if(getLvl()<10) {
             this.lvl++;
-            this.critChance++;
             double maxHpTemp = getMaxHp() * 1.1;
             this.maxHp = (int) maxHpTemp;
 
@@ -131,7 +129,6 @@ public class Player {
                     "** ZZZZ [SLEEPING ALL NIGHT LONG] ZZZZ **\n" +
                     "** You're now on day " + getLvl() + "! **\n" +
                     "** Your maximum health increased to " + getMaxHp() +" **\n" +
-                    "** Your critchance increased to " + getCritChance() + "% **\n");
 
             if(getLvl()==10) {
                 System.out.println("" +
