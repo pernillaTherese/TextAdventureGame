@@ -1,8 +1,8 @@
 package com.pernillaTherese;
 
-import com.pernillaTherese.Enemies.Boar;
+import com.pernillaTherese.Enemies.ForestEnemies.Boar;
 import com.pernillaTherese.Enemies.Enemy;
-import com.pernillaTherese.Enemies.Troll;
+import com.pernillaTherese.Enemies.ForestEnemies.Troll;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -40,6 +40,7 @@ public class ActionBoard {
                 continue;
             } else if(player.isDead()) {
                 deadMenu();
+                break;
             } else {
                 promptEnter();
                 if(player.isReachChapter2()){
@@ -82,13 +83,14 @@ public class ActionBoard {
                 break;
             case 2:
                 System.out.println("** GAME OVER **");
+                System.exit(0);
                 break;
         }
     }
 
     //Keeps the fight going.
     public void actionMenu() {
-        System.out.println("[A]ttack | [B]oost");
+        System.out.println("[A]ttack | [B]oost | [C]haracter Info");
         String choice = sc.next();
         switch (choice) {
             case "A":
@@ -100,6 +102,12 @@ public class ActionBoard {
                 player.boosting(player.getBoostHp());
                 promptEnter();
                 fight(player,enemy);
+                break;
+            case "C":
+            case "c":
+                player.charMenu();
+                promptEnter();
+                actionMenu();
                 break;
         }
     }
@@ -147,7 +155,6 @@ public class ActionBoard {
             addEnvironment();
         }else {
             if (getPlayer().getLvl() <= 3) {
-                System.out.println("player level 1-3 " + getPlayer().getLvl());
                 int chance = random.nextInt(getForestEnemyList().size());
                 Enemy e = getForestEnemyList().get(chance);
                 this.enemy = e;
@@ -157,7 +164,6 @@ public class ActionBoard {
                     System.out.println("A hideous " + getEnemy().getName() + " is sneaking around you behind the trees. He smells like crap!\n");
                 }
             } else if ((getPlayer().getLvl()) > 3 && (getPlayer().getLvl()) < 7) {
-                System.out.println("player level 4-6 " + getPlayer().getLvl());
                 int chance = random.nextInt(getMeadowEnemyList().size());
                 Enemy e = getMeadowEnemyList().get(chance);
                 this.enemy = e;
@@ -167,7 +173,6 @@ public class ActionBoard {
                     System.out.println("A hideous " + getEnemy().getName() + " is sneaking around you behind the trees. He smells like crap!\n");
                 }
             } else if ((getPlayer().getLvl()) > 6 && (getPlayer().getLvl()) < 10) {
-                System.out.println("player level 7-9 " + getPlayer().getLvl());
                 int chance = random.nextInt(getRiverEnemyList().size());
                 Enemy e = getRiverEnemyList().get(chance);
                 this.enemy = e;
@@ -217,7 +222,7 @@ public class ActionBoard {
     public ArrayList<Enemy> addMeadowEnemies() {
         ArrayList<Enemy> meadowEnemyList = new ArrayList<>();
         meadowEnemyList.add(new Troll("Meadow Troll", 600,600,190,80,4));
-        meadowEnemyList.add(new Boar("Meadow Boar",550,550,185,90,5));
+        meadowEnemyList.add(new Boar("Meadow Boar",550,550,190,90,5));
         return meadowEnemyList;
     }
 

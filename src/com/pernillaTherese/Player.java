@@ -14,6 +14,7 @@ public class Player {
     private int lvl; //1-10 When 10, ready for bossfight and then game is won.
     private int xp; //0-100 When 100 increase lvl. Incr when killing monster. Amount depends on monster.
     private int maxHp;
+    private int lastLvlMaxHp;
     private int hp; //Incr. 10% each lvl + pots.
     private int averageDmg; //weaponDmg with hitChance
     private int dmg;
@@ -108,15 +109,16 @@ public class Player {
 
     public void rezurrection() {
         this.lvl--;
-        this.xp =- 100;
-        double maxHpTemp = getMaxHp() - (getMaxHp()*0.1);
-        this.hp = (int) maxHpTemp/2;
+        this.xp = 0;
+        //double maxHpTemp = (getMaxHp()/1.1);
+        this.maxHp = getLastLvlMaxHp();
+        this.hp = maxHp;
         this.isDead = false;
 
         System.out.println("" +
                 "** TIME TRAVELLING BACK TO LIFE **\n" +
                 "** You travelled back in time till the day before and understand that you need to learn more. **\n" +
-                "** You are now back to day " + getLvl() + ", and lost 100 experience points **\n" +
+                "** You are now back to day " + getLvl() + " **\n" +
                 "** Your maximum health decreased to " + getMaxHp() + " from the bad injuries **\n");
         System.out.println("Your health: " + hp + "\n");
     }
@@ -124,6 +126,7 @@ public class Player {
     public void levelUp() { //when xp hits 100 lvl up
         if(getLvl()<10) {
             this.lvl++;
+            this.lastLvlMaxHp = getMaxHp();
             double maxHpTemp = getMaxHp() * 1.1;
             this.maxHp = (int) maxHpTemp;
 
@@ -185,10 +188,12 @@ public class Player {
     public void charMenu() {
         System.out.println("** " + getName() + " **");
         System.out.println("Level: " + getLvl());
+        System.out.println("Current Health: " + getHp());
         System.out.println("Max Health: " + getMaxHp());
         System.out.println("Chance to critically strike: " + getCritChance());
         System.out.println("Chance to hit with melee: " + getHitChanceMelee());
-        System.out.println("Equipped weapon: " + getDagger().getName() + "\n");
+        System.out.println("Equipped weapon: " + getDagger().getName());
+        System.out.println("Boosters: " + getBoostHp().getName() + ", +" + getBoostHp().getPlusHp() + "Hp, Amount: " + getBoostHp().getNumberOf() + "\n");
     }
 
     //GETTERS, SETTERS
@@ -299,5 +304,13 @@ public class Player {
 
     public void setReachChapter3(boolean reachChapter3) {
         this.reachChapter3 = reachChapter3;
+    }
+
+    public int getLastLvlMaxHp() {
+        return lastLvlMaxHp;
+    }
+
+    public void setLastLvlMaxHp(int lastLvlMaxHp) {
+        this.lastLvlMaxHp = lastLvlMaxHp;
     }
 }
