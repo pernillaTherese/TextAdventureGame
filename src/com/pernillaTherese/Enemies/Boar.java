@@ -4,8 +4,8 @@ import com.pernillaTherese.Player;
 
 public class Boar extends Enemy {
 
-    public Boar(String name, int hp, int averageDmg, int hitChance, int critChance) {
-        super(name, hp, averageDmg, hitChance, critChance);
+    public Boar(String name, int maxHp, int hp, int averageDmg, int hitChance, int critChance) {
+        super(name, maxHp, hp, averageDmg, hitChance, critChance);
 
     }
 

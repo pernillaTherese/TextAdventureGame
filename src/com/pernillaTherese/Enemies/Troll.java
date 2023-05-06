@@ -3,8 +3,8 @@ package com.pernillaTherese.Enemies;
 import com.pernillaTherese.Player;
 
 public class Troll extends Enemy {
-    public Troll(String name, int hp, int averageDmg, int hitChance, int critChance) {
-        super(name, hp, averageDmg, hitChance, critChance);
+    public Troll(String name, int maxHp, int hp, int averageDmg, int hitChance, int critChance) {
+        super(name, maxHp, hp, averageDmg, hitChance, critChance);
     }
 
     @Override

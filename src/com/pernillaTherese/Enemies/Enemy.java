@@ -8,6 +8,7 @@ public class Enemy {
     private final int GIVEXP = 50;
     private String name;
     private int lvl;
+    private int maxHp;
     private int hp;
     private int averageDmg; //Average damage. Actually hits +-5% of average. Lvl 1 = 200. Makes each kill about 5 rounds.
     private int dmg;
@@ -16,8 +17,9 @@ public class Enemy {
     private boolean isDead = false;
 
 
-    public Enemy(String name, int hp, int averageDmg, int hitChance, int critChance) {
+    public Enemy(String name, int maxHp, int hp, int averageDmg, int hitChance, int critChance) {
         this.name = name;
+        this.maxHp = maxHp;
         this.hp = hp;
         this.averageDmg = averageDmg;
         this.hitChance = hitChance;
