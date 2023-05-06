@@ -15,12 +15,9 @@ public class Player {
     private int xp; //0-100 When 100 increase lvl. Incr when killing monster. Amount depends on monster.
     private int maxHp;
     private int hp; //Incr. 10% each lvl + pots and gear.
-    private int bowSkill; //1-100 Incr. +1 for each rangedAttack.
-    private int daggerSkill; //1-100 Incr. +1 for each meleeAttack.
     private int averageDmg; //weaponDmg with hitChance depending on Skill
     private int dmg;
     private int hitChanceMelee; //50-100% Incr. +1 for each attack.
-    private int hitChanceRanged;
     private int critChance; //% chance to crit. Incr. +1 for each lvl.
     private boolean isDead;
     private boolean daggerEquip = true;
@@ -34,10 +31,7 @@ public class Player {
         xp = 0;
         maxHp = 1000;
         hp = 1000;
-        bowSkill = 1;
-        daggerSkill = 1;
         hitChanceMelee = 70;
-        hitChanceRanged = 50;
         critChance = 5;
         isDead = false;
         dagger = new Dagger("Flintstone dagger", 1, 180);
@@ -84,10 +78,6 @@ public class Player {
                 }
             }
 
-            if(hitChanceMelee <100) { //hitChance increase for each hit
-                hitChanceMelee++;
-                System.out.println("** You raised your hitchance with daggers to " + hitChanceMelee + "%! **");
-            }
             enemy.takeDamage(dmg); //enemy loose health equals to players dmg.
             System.out.println("Your health: " + hp + " | " + enemy.getName() + "'s health: " + enemy.getHp() + "\n");
 
@@ -225,36 +215,12 @@ public class Player {
         this.hp = hp;
     }
 
-    public int getBowSkill() {
-        return bowSkill;
-    }
-
-    public void setBowSkill(int bowSkill) {
-        this.bowSkill = bowSkill;
-    }
-
-    public int getDaggerSkill() {
-        return daggerSkill;
-    }
-
-    public void setDaggerSkill(int daggerSkill) {
-        this.daggerSkill = daggerSkill;
-    }
-
     public int getHitChanceMelee() {
         return hitChanceMelee;
     }
 
     public void setHitChance(int hitChanceMelee) {
         this.hitChanceMelee = hitChanceMelee;
-    }
-
-    public int getHitChanceRanged() {
-        return hitChanceRanged;
-    }
-
-    public void setHitChanceRanged(int hitChanceRanged) {
-        this.hitChanceRanged = hitChanceRanged;
     }
 
     public boolean isDead() {
