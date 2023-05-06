@@ -19,6 +19,8 @@ public class Player {
     private int dmg;
     private int hitChanceMelee;
     private int critChance;
+    private boolean reachChapter2;
+    private boolean reachChapter3;
     private boolean isDead;
 
 
@@ -32,6 +34,8 @@ public class Player {
         hp = 1000;
         hitChanceMelee = 80;
         critChance = 5;
+        reachChapter2 = false;
+        reachChapter3 = false;
         isDead = false;
         dagger = new Dagger("Flintstone dagger", 1, 180);
         boostHp = new BoostHP("Shamans healing potion",50,3);
@@ -118,7 +122,7 @@ public class Player {
     }
 
     public void levelUp() { //when xp hits 100 lvl up
-        if(getLvl()<10) {
+        if(getLvl()<9) {
             this.lvl++;
             double maxHpTemp = getMaxHp() * 1.1;
             this.maxHp = (int) maxHpTemp;
@@ -128,16 +132,25 @@ public class Player {
                     "** A day has past and you make camp for the night.**\n" +
                     "** ZZZZ [SLEEPING ALL NIGHT LONG] ZZZZ **\n" +
                     "** You're now on day " + getLvl() + "! **\n" +
-                    "** Your maximum health increased to " + getMaxHp() +" **\n" +
+                    "** Your maximum health increased to " + getMaxHp() +" **\n");
 
             if(getLvl()==10) {
                 System.out.println("" +
+                    "******** A day has past and you make camp for the night.********\n" +
+                    "************** ZZZZ [SLEEPING ALL NIGHT LONG] ZZZZ *************\n" +
+                    "****************************************************************\n" +
                     "********************** CONGRATULATIONS! ************************\n" +
-                    "* You reached the highest level and is now ready for THE BOSS! *\n" +
+                    "** You made it to day TEN and can now go back to the village! **\n" +
                     "****************************************************************\n");
             }
 
 
+        }
+        if(getLvl() == 4) {
+            reachChapter2 = true;
+        }
+        if(getLvl() == 7) {
+            reachChapter3 = true;
         }
     }
 
@@ -272,5 +285,19 @@ public class Player {
         return booster;
     }
 
+    public boolean isReachChapter2() {
+        return reachChapter2;
+    }
 
+    public void setReachChapter2(boolean reachChapter2) {
+        this.reachChapter2 = reachChapter2;
+    }
+
+    public boolean isReachChapter3() {
+        return reachChapter3;
+    }
+
+    public void setReachChapter3(boolean reachChapter3) {
+        this.reachChapter3 = reachChapter3;
+    }
 }
