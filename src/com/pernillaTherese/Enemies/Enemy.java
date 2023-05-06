@@ -5,7 +5,7 @@ import com.pernillaTherese.Player;
 import java.util.Random;
 
 public class Enemy {
-    private final int GIVEXP = 50;
+    private final int GIVEXP = 100;
     private String name;
     private int lvl;
     private int maxHp;

@@ -52,6 +52,9 @@ public class ActionBoard {
                     player.setReachChapter3(false);
                     promptEnter();
                 }
+                if(player.getLvl() == 10) {
+                    mainMenue();
+                }
             }
         }
         enemy.setDead(false);

@@ -122,19 +122,19 @@ public class Player {
     }
 
     public void levelUp() { //when xp hits 100 lvl up
-        if(getLvl()<9) {
+        if(getLvl()<10) {
             this.lvl++;
             double maxHpTemp = getMaxHp() * 1.1;
             this.maxHp = (int) maxHpTemp;
 
-            System.out.println("" +
-                    "*********************   DING!   ********************\n" +
-                    "** A day has past and you make camp for the night.**\n" +
-                    "** ZZZZ [SLEEPING ALL NIGHT LONG] ZZZZ **\n" +
-                    "** You're now on day " + getLvl() + "! **\n" +
-                    "** Your maximum health increased to " + getMaxHp() +" **\n");
-
-            if(getLvl()==10) {
+            if(getLvl() < 10) {
+                System.out.println("" +
+                        "*********************   DING!   ********************\n" +
+                        "** A day has past and you make camp for the night.**\n" +
+                        "** ZZZZ [SLEEPING ALL NIGHT LONG] ZZZZ **\n" +
+                        "** You're now on day " + getLvl() + "! **\n" +
+                        "** Your maximum health increased to " + getMaxHp() + " **\n");
+            }else if(getLvl()==10) {
                 System.out.println("" +
                     "******** A day has past and you make camp for the night.********\n" +
                     "************** ZZZZ [SLEEPING ALL NIGHT LONG] ZZZZ *************\n" +
