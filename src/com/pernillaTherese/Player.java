@@ -182,7 +182,7 @@ public class Player {
         }
     }
 
-    public void charMenue() {
+    public void charMenu() {
         System.out.println("** " + getName() + " **");
         System.out.println("Level: " + getLvl());
         System.out.println("Max Health: " + getMaxHp());

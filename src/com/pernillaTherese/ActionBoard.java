@@ -24,7 +24,7 @@ public class ActionBoard {
     public ActionBoard() {
 
         s1.storyIntroduction();
-        mainMenue();
+        mainMenu();
 
     }
 
@@ -36,10 +36,10 @@ public class ActionBoard {
             enemy.attack(getPlayer());
 
             if(!player.isDead() && !enemy.isDead()) {
-                actionMenue();
+                actionMenu();
                 continue;
             } else if(player.isDead()) {
-                deadMenue();
+                deadMenu();
             } else {
                 promptEnter();
                 if(player.isReachChapter2()){
@@ -53,7 +53,7 @@ public class ActionBoard {
                     promptEnter();
                 }
                 if(player.getLvl() == 10) {
-                    mainMenue();
+                    mainMenu();
                 }
             }
         }
@@ -62,8 +62,8 @@ public class ActionBoard {
         createEnemy();
     }
 
-    //Main menue
-    public void mainMenue() {
+    //Main menu
+    public void mainMenu() {
         System.out.println
                 ("** [1] NEW GAME * [2] EXIT GAME  **\n");
 
@@ -78,7 +78,7 @@ public class ActionBoard {
                 s1.firstChapter();
                 promptEnter();
                 s1.firstEnemy();
-                actionMenue();
+                actionMenu();
                 break;
             case 2:
                 System.out.println("** GAME OVER **");
@@ -87,7 +87,7 @@ public class ActionBoard {
     }
 
     //Keeps the fight going.
-    public void actionMenue() {
+    public void actionMenu() {
         System.out.println("[A]ttack | [B]oost");
         String choice = sc.next();
         switch (choice) {
@@ -105,15 +105,15 @@ public class ActionBoard {
     }
 
     //Pops up when dead
-    public void deadMenue() {
+    public void deadMenu() {
         if (getPlayer().getLvl() == 1) {
             System.out.println("You're to unexperienced to time travel. You'll have to start from the beginning\n" +
                     "** GAME OVER **");
-            mainMenue();
+            mainMenu();
         } else {
             System.out.println("" +
                     "What will you do?\n" +
-                    "[T]ime travel back to life | [M]ain Menue (GAME OVER)\n");
+                    "[T]ime travel back to life | [M]ain Menu (GAME OVER)\n");
 
             String choice = sc.next();
             switch (choice) {
@@ -123,7 +123,7 @@ public class ActionBoard {
                     break;
                 case "M":
                 case "m":
-                    mainMenue();
+                    mainMenu();
                     break;
             }
         }
@@ -178,7 +178,7 @@ public class ActionBoard {
                 }
             }
         }
-            actionMenue();
+            actionMenu();
 
     }
 
@@ -189,7 +189,7 @@ public class ActionBoard {
         player = new Player(sc.nextLine());
         System.out.println("\nGood Luck " + player.getName() + "!");
         System.out.println("This is your character sheet:\n");
-        player.charMenue();
+        player.charMenu();
 
     }
 
