@@ -1,11 +1,13 @@
-package com.pernillaTherese.Enemies.ForestEnemies;
+package com.pernillaTherese.Enemies.MeadowEnemies;
 
 import com.pernillaTherese.Enemies.Enemy;
 import com.pernillaTherese.Player;
 
-public class Troll extends Enemy {
-    public Troll(String name, int maxHp, int hp, int averageDmg, int hitChance, int critChance) {
+public class Human extends Enemy {
+
+    public Human(String name, int maxHp, int hp, int averageDmg, int hitChance, int critChance) {
         super(name, maxHp, hp, averageDmg, hitChance, critChance);
+
     }
 
     @Override
@@ -13,27 +15,20 @@ public class Troll extends Enemy {
         return super.attack(player);
     }
 
-
     public void printMiss() {
-        System.out.println(getName() + "'s staff slips out of his hand so it does " + super.getDmg() + " damage to you.");
+        System.out.println(getName() + " shoots a bow arrow at you but it goes straight into the bushes and does " + super.getDmg() + " damage to you.");
     }
-
 
     public void printCrit() {
-        System.out.println(getName() + " rushes forward and **CRITS** you with a roundkick in your cheek with " +
-                "" + super.getDmg() + " damage.");
+        System.out.println(getName() + " hits you with a poisoned arrow straight into your chest and **CRITS** you with " + super.getDmg() + " damage to you.");
     }
 
-    @Override
     public void printStrong() {
-        System.out.println(getName() + " pokes you with the end of his stick and hurt you badly with " + super.getDmg() + " " +
-                "damage.");
+        System.out.println(getName() + " gets a full hit with an arrow into your side and does " + super.getDmg() + " damage to you.");
     }
 
-    @Override
     public void printHit() {
-        System.out.println(getName() + " gives you a fist blow on your nose and does " + super.getDmg() + " " +
-                "damage to you.");
+        System.out.println(getName() + " slips with his fingers on the bow and does weakly " + super.getDmg() + " damage to you.");
     }
 
     @Override
@@ -96,8 +91,4 @@ public class Troll extends Enemy {
         return super.getGIVEXP();
     }
 
-    @Override
-    public int getDmg() {
-        return super.getDmg();
-    }
 }

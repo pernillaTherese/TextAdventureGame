@@ -1,8 +1,12 @@
 package com.pernillaTherese;
 
-import com.pernillaTherese.Enemies.ForestEnemies.Boar;
 import com.pernillaTherese.Enemies.Enemy;
+import com.pernillaTherese.Enemies.ForestEnemies.Boar;
 import com.pernillaTherese.Enemies.ForestEnemies.Troll;
+import com.pernillaTherese.Enemies.MeadowEnemies.Cat;
+import com.pernillaTherese.Enemies.MeadowEnemies.Human;
+import com.pernillaTherese.Enemies.RiverEnemies.Crocodile;
+import com.pernillaTherese.Enemies.RiverEnemies.Hydra;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,7 +19,7 @@ public class ActionBoard {
 
 
     Player player;
-    Enemy enemy = new Boar("Black Boar",150,150,150,75,2);
+    Enemy enemy = new Boar("Black Boar",500,400,150,75,2);
     ArrayList<Enemy> forestEnemyList = addForestEnemies();
     ArrayList<Enemy> meadowEnemyList = addMeadowEnemies();
     ArrayList<Enemy> riverEnemyList = addRiverEnemies();
@@ -161,25 +165,25 @@ public class ActionBoard {
                 if (e instanceof Boar) {
                     System.out.println("You're standing face to face with a " + getEnemy().getName() + ". It looks disturbed by your presence.\n");
                 } else if (e instanceof Troll) {
-                    System.out.println("A hideous " + getEnemy().getName() + " is sneaking around you behind the trees. He smells like crap!\n");
+                    System.out.println("A hideous " + getEnemy().getName() + " is sneaking around behind the trees. He smells like crap!\n");
                 }
             } else if ((getPlayer().getLvl()) > 3 && (getPlayer().getLvl()) < 7) {
                 int chance = random.nextInt(getMeadowEnemyList().size());
                 Enemy e = getMeadowEnemyList().get(chance);
                 this.enemy = e;
-                if (e instanceof Boar) {
-                    System.out.println("You're standing face to face with a " + getEnemy().getName() + ". It looks disturbed by your presence.\n");
-                } else if (e instanceof Troll) {
-                    System.out.println("A hideous " + getEnemy().getName() + " is sneaking around you behind the trees. He smells like crap!\n");
+                if (e instanceof Cat) {
+                    System.out.println("You can see a " + getEnemy().getName() + " sneeking around behind the tall grass. It looks like its ready to take a leap.\n");
+                } else if (e instanceof Human) {
+                    System.out.println("You have crossed the grounds of the enemy tribe Enghu and been spotted by a " + getEnemy().getName() + ". He has lifted his bow and is aiming your way.\n");
                 }
             } else if ((getPlayer().getLvl()) > 6 && (getPlayer().getLvl()) < 10) {
                 int chance = random.nextInt(getRiverEnemyList().size());
                 Enemy e = getRiverEnemyList().get(chance);
                 this.enemy = e;
-                if (e instanceof Boar) {
-                    System.out.println("You're standing face to face with a " + getEnemy().getName() + ". It looks disturbed by your presence.\n");
-                } else if (e instanceof Troll) {
-                    System.out.println("A hideous " + getEnemy().getName() + " is sneaking around you behind the trees. He smells like crap!\n");
+                if (e instanceof Crocodile) {
+                    System.out.println("A huge " + getEnemy().getName() + " throws itself up on the beach and tries to grab you. It seems mighty hungry.\n");
+                } else if (e instanceof Hydra) {
+                    System.out.println("Suddenly the heads of a " + getEnemy().getName() + " raises up from the water. It starts to swim towards you and make its way up on the beach.\n");
                 }
             }
         }
@@ -213,23 +217,24 @@ public class ActionBoard {
 
     public ArrayList<Enemy> addForestEnemies() {
         ArrayList<Enemy> forestEnemyList = new ArrayList<>();
-        forestEnemyList.add(new Troll("Senil Tribe Troll", 190,190,190,80,4));
-        forestEnemyList.add(new Boar("Uggly-as-Hell Boar",185,185,185,90,5));
-        forestEnemyList.add(new Boar("Big Black Boar",150,150,150,75,3));
+        forestEnemyList.add(new Troll("Senil Tribe Troll", 600,600,220,85,5));
+        forestEnemyList.add(new Boar("Uggly-as-Hell Boar",550,550,210,80,4));
+        forestEnemyList.add(new Boar("Big Black Boar",500,500,200,75,3));
         return forestEnemyList;
     }
 
     public ArrayList<Enemy> addMeadowEnemies() {
         ArrayList<Enemy> meadowEnemyList = new ArrayList<>();
-        meadowEnemyList.add(new Troll("Meadow Troll", 600,600,190,80,4));
-        meadowEnemyList.add(new Boar("Meadow Boar",550,550,190,90,5));
+        meadowEnemyList.add(new Human("Enghu Tribe Scout", 700,700,240,85,5));
+        meadowEnemyList.add(new Human("Enghu Tribe Hunter", 650,650,230,85,4));
+        meadowEnemyList.add(new Cat("Cave Lion", 600,600,220,85,4));
         return meadowEnemyList;
     }
 
     public ArrayList<Enemy> addRiverEnemies() {
         ArrayList<Enemy> riverEnemyList = new ArrayList<>();
-        riverEnemyList.add(new Troll("River Troll", 600,600,190,80,4));
-        riverEnemyList.add(new Boar("River Boar",550,550,185,90,5));
+        riverEnemyList.add(new Hydra("Five Headed Hydra", 750,750,250,85,5));
+        riverEnemyList.add(new Crocodile("River Croc", 700,700,240,85,5));
         return riverEnemyList;
     }
 

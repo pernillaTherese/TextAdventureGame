@@ -38,8 +38,8 @@ public class Player {
         reachChapter2 = false;
         reachChapter3 = false;
         isDead = false;
-        dagger = new Dagger("Flintstone dagger", 1, 180);
-        boostHp = new BoostHP("Shamans healing potion",50,3);
+        dagger = new Dagger("Flintstone dagger", 1, 200);
+        boostHp = new BoostHP("Shamans healing potion",500,3);
 
     }
 
