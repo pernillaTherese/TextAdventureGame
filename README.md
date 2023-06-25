@@ -1,2 +1,2 @@
 # TextAdventureGame
-This is a School Assignment for ITHS Gothenburg in Java Course first semester, to learn about Classes.
+This is a School Assignment for ITHS Gothenburg in the Java Course of the first semester, to learn about Classes.
